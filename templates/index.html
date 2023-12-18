@@ -2,6 +2,7 @@
 {% import "macros/head.html" as macros_head %}
 {% import "macros/section_title.html" as macros_section_title %}
 {% import "partials/member.html" as partial_member %}
+{% import "partials/publication.html" as partial_publication %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@
   <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 
   {{ macros_head::stylesheet() }}
-
+  {{ macros_head::katex_css() }}
 </head>
 
 <body>
@@ -126,6 +127,8 @@
 
   <!--Custom scripts for this template-->
   <script src="{{ get_url(path="js/clean-blog.min.js") }}"></script>
+
+  {{ macros_head::katex_script() }}
 
   <!--- Additional scripts -->
   {% block extrascripts %}
