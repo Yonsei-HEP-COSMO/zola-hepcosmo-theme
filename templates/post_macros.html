@@ -2,15 +2,13 @@
 <a href="{{ page.permalink }}">
     <h2 class="post-title">{{ page.title }}</h2>
 </a>
-<p class="post-meta">Posted by
-    <a href="#">{{config.extra.author}}</a>
-    on {{ page.date | date(format="%e %B %Y")}}</p>
+<p class="post-meta">
+    Date: {{ page.date | date(format="%Y %B %e %H:%M")}}</p>
 {% endmacro page_list %}
 
 {% macro page_header(page) %}
 <h1>{{ page.title }}</h1>
-<span class="meta">Posted by
-    <a href="#">{{config.extra.author}}</a>
-    on {{ page.date | date(format="%e %B %Y")}}
+<span class="meta">
+    Date: {{ page.date | date(format="%Y %B %e")}}
 </span>
 {% endmacro page_list %}
