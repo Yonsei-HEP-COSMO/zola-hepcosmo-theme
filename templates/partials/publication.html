@@ -18,7 +18,9 @@
     {% if publication.journal %}
     <a href="{{ publication.hyperlink }}">{{ publication.journal }}</a>, 
     {% endif %}
+    {% if publication.arxiv %}
     <a href="{{ publication.arxivlink }}">[{{ publication.arxiv }}]</a>
+    {% endif %}
     </p>
     {% endfor %}
     <hr/><br/>
