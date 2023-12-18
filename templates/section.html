@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block header %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ get_url(path=section.extra.image) }}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          {{ macros_section_title::section_header(section=section) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{ section.content | safe }}
+        {% if section.taxonomies.tags %}
+        <div class="post-tags">
+          <p>Tags:
+            {% for tag in section.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>
+            {% endfor %}
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock content %}
