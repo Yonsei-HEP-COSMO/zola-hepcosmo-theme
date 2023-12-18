@@ -1,0 +1,90 @@
+{% macro display() %}
+{% set data = load_data(path="data/members.json") %}
+<div style="overflow: auto">
+    <h3>Professor</h3>
+    {% for member in data %}
+    {% if member.position == "Professor" %}
+    <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
+    <ul class="member-list">
+        <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
+        <li>Office: {{ member.location }}</li>
+        {% if member.link %}
+        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    <hr/><br/>
+    <h3>Research Professor</h3>
+    {% for member in data %}
+    {% if member.position == "Research Professor" %}
+    <p><b>{{ member.name | markdown(inline=true) | safe }}</b>
+    <ul class="member-list">
+        <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
+        <li>Office: {{ member.location }}</li>
+        {% if member.link %}
+        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    <hr/><br/>
+    <h3>Post-Doc</h3>
+    {% for member in data %}
+    {% if member.position == "Post-Doc" %}
+    <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
+    <ul class="member-list">
+        <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
+        <li>Office: {{ member.location }}</li>
+        {% if member.link %}
+        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    <hr/><br/>
+    <h3>Graduate Student</h3>
+    {% for member in data %}
+    {% if member.position == "Graduate" %}
+    <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
+    <ul class="member-list">
+        <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
+        <li>Office: {{ member.location }}</li>
+        {% if member.link %}
+        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    <hr/><br/>
+    {# <h3>Undergraduate Student</h3>
+    {% for member in data %}
+    {% if member.position == "Undergraduate" %}
+    <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
+    <ul>
+        <li>Email: {{ member.email }}</li>
+        <li>Office: {{ member.location }}</li>
+        {% if member.link %}
+        <li>Link: <a href="{{ member.link }}">[Blog]</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    <hr/> #}
+    <h3>Alumni</h3>
+    {% for member in data %}
+    {% if member.position == "Alumni" %}
+    <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
+    <ul class="member-list">
+        {% if member.email %}
+        <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
+        {% endif %}
+        <li>Position: {{ member.location }}</li>
+        {% if member.link %}
+        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endmacro %}
