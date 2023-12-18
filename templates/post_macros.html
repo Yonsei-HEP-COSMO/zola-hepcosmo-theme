@@ -3,12 +3,13 @@
     <h2 class="post-title">{{ page.title }}</h2>
 </a>
 <p class="post-meta">
-    Date: {{ page.date | date(format="%Y %B %e %H:%M")}}</p>
+- Date: {{ page.date | date(format="%Y %B %e (%a), %r %Z")}}<br/>
+- Place: {{ page.extra.place }}</p>
 {% endmacro page_list %}
 
 {% macro page_header(page) %}
 <h1>{{ page.title }}</h1>
 <span class="meta">
-    Date: {{ page.date | date(format="%Y %B %e")}}
-</span>
+- Date: {{ page.date | date(format="%Y %B %e (%a), %r %Z")}}<br/>
+- Place: {{ page.extra.place }}</span>
 {% endmacro page_list %}
