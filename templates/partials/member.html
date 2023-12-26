@@ -2,64 +2,67 @@
 {% set data = load_data(path="data/members.json") %}
 <div style="overflow: auto">
     <h3>Professor</h3>
-    {% for member in data %}
-    {% if member.position == "Professor" %}
+    {% set prof = data | filter(attribute="position", value="Professor") %}
+    {% for member in prof %}
     <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
     <ul class="member-list">
         <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
         <li>Office: {{ member.location }}</li>
-        {% if member.link %}
-        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% if member.links %}
+        <li>Link: {% for link_data in member.links %} <u><a href="{{ link_data.link }}">[{{ link_data.link_type }}]</a></u>{% endfor %}</li>
         {% endif %}
     </ul>
-    {% endif %}
     {% endfor %}
     <hr/><br/>
+    {% set research_prof = data | filter(attribute="position", value="Research Professor") %}
+    {% if research_prof %}
     <h3>Research Professor</h3>
-    {% for member in data %}
-    {% if member.position == "Research Professor" %}
+    {% for member in research_prof %}
     <p><b>{{ member.name | markdown(inline=true) | safe }}</b>
     <ul class="member-list">
         <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
         <li>Office: {{ member.location }}</li>
-        {% if member.link %}
-        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% if member.links %}
+        <li>Link: {% for link_data in member.links %} <u><a href="{{ link_data.link }}">[{{ link_data.link_type }}]</a></u>{% endfor %}</li>
         {% endif %}
     </ul>
-    {% endif %}
     {% endfor %}
     <hr/><br/>
+    {% endif %}
+    {% set postdoc = data | filter(attribute="position", value="Post-Doc") %}
+    {% if postdoc %}
     <h3>Post-Doc</h3>
-    {% for member in data %}
-    {% if member.position == "Post-Doc" %}
+    {% for member in postdoc %}
     <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
     <ul class="member-list">
         <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
         <li>Office: {{ member.location }}</li>
-        {% if member.link %}
-        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% if member.links %}
+        <li>Link: {% for link_data in member.links %} <u><a href="{{ link_data.link }}">[{{ link_data.link_type }}]</a></u>{% endfor %}</li>
         {% endif %}
     </ul>
-    {% endif %}
     {% endfor %}
     <hr/><br/>
+    {% endif %}
+    {% set grad = data | filter(attribute="position", value="Graduate") %}
+    {% if grad %}
     <h3>Graduate Student</h3>
-    {% for member in data %}
-    {% if member.position == "Graduate" %}
+    {% for member in grad %}
     <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
     <ul class="member-list">
         <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
         <li>Office: {{ member.location }}</li>
-        {% if member.link %}
-        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% if member.links %}
+        <li>Link: {% for link_data in member.links %} <u><a href="{{ link_data.link }}">[{{ link_data.link_type }}]</a></u>{% endfor %}</li>
         {% endif %}
     </ul>
-    {% endif %}
     {% endfor %}
     <hr/><br/>
-    {# <h3>Undergraduate Student</h3>
-    {% for member in data %}
-    {% if member.position == "Undergraduate" %}
+    {% endif %}
+    {% set undergrad = data | filter(attribute="position", value="Undergraduate") %}
+    {% if undergrad %}
+    <h3>Undergraduate Student</h3>
+    {% for member in undergrad %}
     <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
     <ul>
         <li>Email: {{ member.email }}</li>
@@ -68,23 +71,26 @@
         <li>Link: <a href="{{ member.link }}">[Blog]</a></li>
         {% endif %}
     </ul>
-    {% endif %}
     {% endfor %}
-    <hr/> #}
+    <hr/><br/>
+    {% endif %}
+    {% set alumni = data | filter(attribute="position", value="Alumni") %}
+    {% if alumni %}
     <h3>Alumni</h3>
-    {% for member in data %}
-    {% if member.position == "Alumni" %}
+    {% for member in alumni %}
     <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
     <ul class="member-list">
         {% if member.email %}
         <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
         {% endif %}
+        {% if member.location %}
         <li>Position: {{ member.location }}</li>
-        {% if member.link %}
-        <li>Link: <u><a href="{{ member.link }}">[{{ member.link_type }}]</a></u></li>
+        {% endif %}
+        {% if member.links %}
+        <li>Link: {% for link_data in member.links %} <u><a href="{{ link_data.link }}">[{{ link_data.link_type }}]</a></u>{% endfor %}</li>
         {% endif %}
     </ul>
-    {% endif %}
     {% endfor %}
+    {% endif %}
 </div>
 {% endmacro %}
