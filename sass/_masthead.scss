@@ -77,9 +77,9 @@ header.masthead {
       @include sans-serif-font;
     }
     .meta {
-      font-size: 20px;
-      font-weight: 300;
-      font-style: italic;
+      font-size: 22px;
+      font-weight: 600;
+      // font-style: italic;
       @include sans-serif-font;
       a {
         color: $white;

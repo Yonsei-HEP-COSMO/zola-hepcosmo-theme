@@ -22,7 +22,8 @@
   }
   > .post-meta {
     font-size: 18px;
-    font-style: italic;
+    @include sans-serif-font;
+    font-weight: 400;
     margin-top: 0;
     color: $gray-600;
     > a {
