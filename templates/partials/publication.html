@@ -7,16 +7,16 @@
     {% set data_filtered = data | filter(attribute="year", value=year) %}
     {% for publication in data_filtered | reverse %}
     <p>
-    {% for people in publication.people %}
-    {% if people in member_data %}
-    <b>{{ people }}</b>, 
+    {% for author in publication.authors %}
+    {% if author in member_data %}
+    <b>{{ author }}</b>, 
     {% else %}
-    {{ people }}, 
+    {{ author }}, 
     {% endif %}
     {% endfor %}
     <i>{{ publication.title | markdown(inline=true) | safe }}</i>,
     {% if publication.journal %}
-    <a href="{{ publication.hyperlink }}">{{ publication.journal }}</a>, 
+    <a href="{{ publication.journallink }}">{{ publication.journal }}</a>, 
     {% endif %}
     {% if publication.arxiv %}
     <a href="{{ publication.arxivlink }}">[{{ publication.arxiv }}]</a>
