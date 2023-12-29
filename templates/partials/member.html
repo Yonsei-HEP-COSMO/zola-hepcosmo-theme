@@ -67,8 +67,8 @@
     <ul>
         <li>Email: {{ member.email }}</li>
         <li>Office: {{ member.location }}</li>
-        {% if member.link %}
-        <li>Link: <a href="{{ member.link }}">[Blog]</a></li>
+        {% if member.links %}
+        <li>Link: {% for link_data in member.links %} <u><a href="{{ link_data.link }}">[{{ link_data.link_type }}]</a></u>{% endfor %}</li>
         {% endif %}
     </ul>
     {% endfor %}
