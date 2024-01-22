@@ -24,7 +24,7 @@
     <h1 style="text-align:center">Past Events</h1>
     <hr/>
     <div class="posts">
-        {% for page in paginator.pages | reverse %}
+        {% for page in paginator.pages %}
         <div class="post-preview">
         {{ post_macros::page_title(page=page) }}
         <p class="post-summary">{{ page.summary | safe }}</p>
