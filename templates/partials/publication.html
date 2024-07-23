@@ -2,7 +2,7 @@
 {% set data = load_data(path="data/publications.json") %}
 {% set member_data = load_data(path="data/members.json") | map(attribute="name") %}
 <div style="overflow: auto">
-    {% for year in [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016,] %}
+    {% for year in [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016,] %}
     <h3>{{ year }}</h3>
     {% set data_filtered = data | filter(attribute="year", value=year) %}
     {% for publication in data_filtered | reverse %}
