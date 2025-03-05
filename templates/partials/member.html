@@ -64,8 +64,8 @@
     <h3>Undergraduate Student</h3>
     {% for member in undergrad %}
     <p><b>{{ member.name | markdown(inline=true) | safe }}</b></p>
-    <ul>
-        <li>Email: {{ member.email }}</li>
+    <ul class="member-list">
+        <li>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
         <li>Office: {{ member.location }}</li>
         {% if member.links %}
         <li>Link: {% for link_data in member.links %} <u><a href="{{ link_data.link }}">[{{ link_data.link_type }}]</a></u>{% endfor %}</li>
